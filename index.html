@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScrollTrigger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+  </head>
+  <body class="ksb text-white h-screen">
+    <div
+      id="main"
+      class="w-full flex flex-col h-screen py-12 px-24 gap-48 bg-black"
+    >
+      <progress max="100" class="rotate-90" value="0"></progress>
+
+      <div id="navbar" class="flex justify-between items-center flex-row">
+        <!-- Real Logo Anim then move to top left -->
+        <div
+          id="logo"
+          class="grid grid-cols-2 h-8 w-8 ksb grid-rows-2 gap-0 text-sm font-bold"
+        >
+          <div class="text-center logo-text">A</div>
+          <div class="text-center logo-text">B</div>
+          <div class="text-center logo-text">D</div>
+          <div class="text-center logo-text">I</div>
+        </div>
+        <!-- Small placeholder logo on the top-left -->
+        <div
+          class="grid hid grid-cols-2 h-8 w-8 grid-rows-2 gap-0 text-sm font-bold"
+        >
+          <div class="text-center">A</div>
+          <div class="text-center">B</div>
+          <div class="text-center">D</div>
+          <div class="text-center">I</div>
+        </div>
+        <!-- Full name in the center -->
+        <div id="nav" class="flex flex-row gap-6 text-sm">
+          <p id="home" class="hover:scale-[120%] cursor-pointer transition-all">Home</p>
+          <p id="skills" class="hover:scale-[120%] cursor-pointer transition-all">Skills</p>
+          <p id="about" class="hover:scale-[120%] cursor-pointer transition-all">About</p>
+          <p id="projects" class="hover:scale-[120%] cursor-pointer transition-all">
+            Projects
+          </p>
+    
+        </div>
+
+        <!-- Icons on the top-right -->
+        <div id="icons" class="text-white flex flex-row gap-12">
+          <i
+            class="text-lg bi bi-github hover:scale-[120%] cursor-pointer transition-all"
+          ></i>
+          <i
+            class="text-lg bi bi-linkedin hover:scale-[120%] cursor-pointer transition-all"
+          ></i>
+          <i
+            class="text-lg bi bi-envelope-fill hover:scale-[120%] cursor-pointer transition-all"
+          ></i>
+        </div>                                                          
+      </div>
+
+      <div id="hero" class="flex flex-row w-full items-center">
+        <div class="w-[56%] flex flex-col">
+          <div id="hero-text" class="flex flex-col gap-12">
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-col">
+                <span class="text-[5em] kr">Hello, I'm</span>
+                <span id="name" class="text-[5em] hid kr">Farah Abdi,</span>
+                <span class="text-[5em] kr">Software Engineer.</span>
+              </div>
+              <span class="kr text-[1.5em] text-neutral-400"
+                >Computer Science & Engineering, 2028 @ Ohio State
+                University</span
+              >
+            </div>
+            <div
+              class="border-white border-2 hover:scale-[110%] transition-all ease-in-out flex w-fit px-4 py-2 rounded-lg"
+            >
+              <button class="text-white text-[1em]">CONTACT ME</button>
+            </div>
+          </div>
+        </div>
+        <div
+          id="cardcontainer"
+          class="w-[52%] h-full flex items-center justify-center"
+        ></div>
+      </div>
+
+      <div id="skills-text" class="gap-6 justify-center flex flex-col w-[56%]">
+        <span class="text-[5em] kr">What's in My Deck</span>
+        <span class="text-[1.5em] text-neutral-400 w-[75%] kr">
+          A curated collection of skills that form the foundation of my work as
+          a Software Engineer. These skills represent the tools, technologies,
+          and expertise I’ve developed to build efficient, reliable, and
+          innovative solutions. From programming languages to frameworks, each
+          skill plays a vital role in creating meaningful and impactful results.
+        </span>
+      </div>
+
+      <div id="about-text" class="gap-6 justify-center flex flex-col w-[56%]">
+        <span class="text-[5em] kr">About Me</span>
+        <span class="text-[1.5em] text-neutral-400 w-[75%] kr">
+          I’m an aspiring Software Engineer with a passion for problem-solving
+          and a drive to build meaningful solutions. With a focus on developing
+          my skills in modern technologies and learning through hands-on
+          experience, I’m committed to creating efficient, user-focused
+          solutions. I approach every challenge with curiosity, determination,
+          and a desire to grow.
+        </span>
+      </div>
+
+      <div
+        id="ace-container"
+        class="w-full flex flex-row items-center pl-16 justify-between"
+      >
+        <div class="ace-card">
+          <span class="absolute top-[1rem] left-[1rem]">A</span>
+          <span class="absolute bottom-[1rem] right-[1rem] rotate-180">A</span>
+          <div
+            class="h-full py-12 flex flex-col items-center gap-2 justify-center w-[76%]"
+          >
+            <span>Sparkx Chat</span>
+            <span class="text-[0.5em] kr text-neutral-200 leading-relaxed"
+              >A dynamic live messaging platform built using React for the web
+              and React Native for mobile, supported by a unified backend
+              powered by Node.js with Express.js and MongoDB. Key features
+              include real-time messaging enabled by Socket.io and secure
+              authentication through JWT.</span
+            >
+            <div class="flex flex-row gap-4 pt-2">
+              <a
+                target="_blank"
+                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
+                href="https://sparkxchat.vercel.app"
+                >Visit Here</a
+              >
+              <a
+                target="_blank"
+                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
+                href="https://github.com/Aabdi22k/"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          id="ace-display"
+          class="flex w-[68%] h-[60vh] rounded-2xl bg-neutral-800 py-12 justify-center items-center gap-4"
+        >
+          <span class="absolute top-[1rem] left-[1rem]">Sparkx</span>
+          <span class="absolute bottom-[1rem] right-[1rem] rotate-180"
+            >Sparkx</span
+          >
+          <img
+            style="height: 422px; width: 212px"
+            src="./sparkx mobile 1.png"
+            alt="Sparkx Mobile 1"
+          />
+          <img
+            style="height: 431px; width: 606px"
+            src="./sparkx desktop.png"
+            alt="Sparkx desktop"
+          />
+          <img
+            style="height: 422px; width: 212px"
+            src="./sparkx mobile 2.png"
+            alt="Sparkx Mobile 2"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
