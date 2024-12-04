@@ -12,13 +12,21 @@ fi
 # Commit message passed as the first argument
 COMMIT_MESSAGE="$1"
 
+# Dummy file to track changes
+DUMMY_FILE="dummy.txt"
+
+# Ensure the dummy file exists
+touch "$DUMMY_FILE"
+
 # Loop for the past 40 days
 for i in {1..40}; do
     # Calculate the date for 'i' days ago
     COMMIT_DATE=$(date -d "$i days ago" +"%Y-%m-%d 12:00:00")
     
-    # Stage changes (you can modify this if needed)
-    echo "Creating commit for date: $COMMIT_DATE"
+    # Add a line to the dummy file to ensure changes
+    echo "Commit for $COMMIT_DATE" >> "$DUMMY_FILE"
+
+    # Stage changes
     git add .
 
     # Create the commit with the custom date
