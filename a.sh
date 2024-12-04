@@ -33,4 +33,14 @@ for i in {1..40}; do
     GIT_AUTHOR_DATE="$COMMIT_DATE" GIT_COMMITTER_DATE="$COMMIT_DATE" git commit -m "$COMMIT_MESSAGE (Day -$i)"
 done
 
-echo "Successfully created 40 commits!"
+# Remove the dummy file
+echo "Removing $DUMMY_FILE"
+rm "$DUMMY_FILE"
+git add "$DUMMY_FILE"  # Stage the removal
+git commit -m "Remove dummy file"
+
+# Push the changes to the main branch
+echo "Pushing to main branch..."
+git push origin main
+
+echo "All done!"
