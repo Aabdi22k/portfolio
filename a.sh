@@ -15,6 +15,24 @@ COMMIT_MESSAGE="$1"
 # Dummy file to track changes
 DUMMY_FILE="dummy.txt"
 
+# Check if the current directory is a Git repository
+if [ ! -d ".git" ]; then
+    echo "No Git repository found, initializing a new one..."
+    git init
+fi
+
+# Check if a remote repository exists
+REMOTE_URL=$(git remote -v)
+
+if [ -z "$REMOTE_URL" ]; then
+    echo "No remote repository found. Please provide the remote URL (e.g., https://github.com/username/repo.git):"
+    read -p "Remote URL: " REMOTE_URL
+
+    # Add remote repository URL
+    git remote add origin "$REMOTE_URL"
+    echo "Remote repository added: $REMOTE_URL"
+fi
+
 # Ensure the dummy file exists
 touch "$DUMMY_FILE"
 
@@ -41,6 +59,6 @@ git commit -m "Remove dummy file"
 
 # Push the changes to the main branch
 echo "Pushing to main branch..."
-git push origin main
+git push -u origin main
 
 echo "All done!"
