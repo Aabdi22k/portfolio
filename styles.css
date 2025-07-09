@@ -55,7 +55,7 @@ progress::-moz-progress-bar {
   transform-origin: bottom;
   position: absolute;  
 }
-.ace-card {
+#ace-card1, #ace-card2, #ace-card3, #ace-card4 {
   width: 240px;
   height: 360px;
   background: #111111; /* Transparent background */

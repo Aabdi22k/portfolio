@@ -10,9 +10,27 @@ const about = document.getElementById('about');
 
 
 gsap.set(
-  "#ace-container",
+  "#ace-container1",
   {
     y: -1836,
+  },
+);
+gsap.set(
+  "#ace-container2",
+  {
+    y: -2636,
+  },
+);
+gsap.set(
+  "#ace-container3",
+  {
+    y: -3436,
+  },
+);
+gsap.set(
+  "#ace-container4",
+  {
+    y: -4236,
   },
 );
 
@@ -240,21 +258,21 @@ document.addEventListener("DOMContentLoaded", function () {
   skills.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 360
+      scrollTo: 1136
     });
   });
 
   about.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 660
+      scrollTo: 2036
     });
   })
   
   projects.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 1000
+      scrollTo: 3036
     });
   })
 
@@ -266,10 +284,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const tl2 = gsap.timeline({
     scrollTrigger: {
-      scrub: 2,
+      scrub: 1,
       trigger: "#main",
       toggleActions: "play none none reverse",
       pin: true,
+      end: "+=6000"
     },
   
   });
@@ -458,18 +477,92 @@ document.addEventListener("DOMContentLoaded", function () {
     "<"
   );
   
-  tl2.from('.ace-card', {
+  tl2.from('#ace-card1', {
     x:-240,
     opacity: 0,
     duration: 1000,
     ease: "power2.inOut",
   }, '<3')
-  tl2.from('#ace-display', {
+  tl2.from('#ace-display1', {
     x:240,
     opacity: 0,
     duration: 1000,
     ease: "power2.inOut",
   }, '<')
+
+  tl2.to(
+    "#ace-container1",
+    {
+      y: -3800,
+      duration: 600,
+      ease: "power2.inOut",
+    },
+  );
+
+  tl2.from('#ace-card2', {
+    x:-240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<3')
+  tl2.from('#ace-display2', {
+    x:240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<')
+
+
+  tl2.to(
+    "#ace-container2",
+    {
+      y: -3800,
+      duration: 600,
+      ease: "power2.inOut",
+    },
+  );
+
+  tl2.from('#ace-card3', {
+    x:-240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<3')
+  tl2.from('#ace-display3', {
+    x:240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<')
+  .call(() => {
+    document.querySelectorAll('.ace3-vid').forEach(video => {
+      video.play();
+    });
+  }, null, '<');
+
+  tl2.to(
+    "#ace-container3",
+    {
+      y: -6000,
+      duration: 600,
+      ease: "power2.inOut",
+    },
+  );
+
+  tl2.from('#ace-card4', {
+    x:-240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<3')
+  tl2.from('#ace-display4', {
+    x:240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<')
+
+
 
   
 });
