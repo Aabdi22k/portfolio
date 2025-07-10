@@ -7,6 +7,7 @@ const home = document.getElementById('home');
 const skills = document.getElementById('skills');
 const projects = document.getElementById('projects');
 const about = document.getElementById('about');
+const experience = document.getElementById('experience')
 
 
 gsap.set(
@@ -31,6 +32,12 @@ gsap.set(
   "#ace-container4",
   {
     y: -4236,
+  },
+);
+gsap.set(
+  "#joker-container",
+  {
+    y: -4836,
   },
 );
 
@@ -258,21 +265,27 @@ document.addEventListener("DOMContentLoaded", function () {
   skills.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 1136
+      scrollTo: 1036
     });
   });
 
   about.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 2036
+      scrollTo: 1736
     });
   })
   
   projects.addEventListener('click', () => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: 3036
+      scrollTo: 2536
+    });
+  })
+  experience.addEventListener('click', () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: 6000
     });
   })
 
@@ -561,6 +574,25 @@ document.addEventListener("DOMContentLoaded", function () {
     duration: 1000,
     ease: "power2.inOut",
   }, '<')
+
+  tl2.to(
+    "#ace-container4",
+    {
+      y: -6000,
+      duration: 600,
+      ease: "power2.inOut",
+    },
+  );
+
+  tl2.from('.joker', {
+    y:240,
+    opacity: 0,
+    duration: 1000,
+    ease: "power2.inOut",
+  }, '<3')
+  
+
+  
 
 
 
