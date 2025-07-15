@@ -1,47 +1,20 @@
+// app.js - Optimized GSAP animations
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-ScrollTrigger.normalizeScroll(true); // enable
-const cardContainer = document.getElementById("cardcontainer");
+ScrollTrigger.normalizeScroll(true);
+// --- Featured Projects: reveal on scroll ---
+const featHeading = document.querySelector("#featured-projects .hero-text");
+const projectCards = gsap.utils.toArray("#featured-projects .project-card");
+const revealEls = [featHeading, ...projectCards];
+// grab the elements
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav");
 
-
-const home = document.getElementById('home');
-const skills = document.getElementById('skills');
-const projects = document.getElementById('projects');
-const about = document.getElementById('about');
-const experience = document.getElementById('experience')
-
-
-gsap.set(
-  "#ace-container1",
-  {
-    y: -1836,
-  },
-);
-gsap.set(
-  "#ace-container2",
-  {
-    y: -2636,
-  },
-);
-gsap.set(
-  "#ace-container3",
-  {
-    y: -3436,
-  },
-);
-gsap.set(
-  "#ace-container4",
-  {
-    y: -4236,
-  },
-);
-gsap.set(
-  "#joker-container",
-  {
-    y: -4836,
-  },
-);
-
-// Define card values and suits (12 values and 12 suits)
+// on click, flip hidden ↔ visible
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("hidden");
+});
+// Generate tech cards
 const cardValues = [
   "2",
   "3",
@@ -55,546 +28,298 @@ const cardValues = [
   "J",
   "Q",
   "K",
+  "A"
 ];
 const devicons = [
   "python",
   "javascript",
   "java",
-  "go",
-  "ruby",
-  "php",
+  "csharp",
+  "mongodb",
+  "tailwindcss",
   "html5",
   "css3",
   "typescript",
-  "nodejs",
-  "react",
-  "angular",
+  "docker",
+  "vscode",
+  "git",
+  "amazonwebservices"
 ];
 
-// Loop through each card value and create a card with a unique suit
-for (let i = 0; i < cardValues.length; i++) {
+const cardContainer = document.getElementById("cardcontainer");
+cardValues.forEach((val, i) => {
+  const icon = devicons[i];
   const card = document.createElement("div");
-  card.classList.add("card");
-
-  // Add content to the card
+  card.className = "card";
   card.innerHTML = `
-    <span class="absolute top-[1rem] left-[1rem]">${cardValues[i]}</span>
-    <i class="devicon-${devicons[i]}-plain absolute left-[1rem] top-[3rem]"></i>
-    <span class="absolute bottom-[1rem] right-[1rem] rotate-180">${cardValues[i]}</span>
-    <i class="devicon-${devicons[i]}-plain absolute right-[1rem] bottom-[3rem] rotate-180"></i>
+    <span class="absolute top-[1rem] left-[1rem]">${val}</span>
+    <i class="devicon-${icon}-plain absolute left-[1rem] top-[3rem]"></i>
+    <span class="absolute bottom-[1rem] right-[1rem] rotate-180">${val}</span>
+    <i class="devicon-${icon}-plain absolute right-[1rem] bottom-[3rem] rotate-180"></i>
     <div class="w-full h-full flex items-center justify-center">
-      <i class="devicon-${devicons[i]}-plain scale-[5]"></i>
-    </div>
-  `;
-
-  // Append the card to the container
+      <i class="devicon-${icon}-plain scale-[5]"></i>
+    </div>`;
   cardContainer.appendChild(card);
-}
+});
 
-
-
-
-const fonts = [
-  "Kodchasan",
-  "Arial",
-  "Verdana",
-  "Helvetica",
-  "Georgia",
-  "Times New Roman",
-  "Courier New",
-  "Brush Script MT",
-  "Comic Sans MS",
-  "Lucida Console",
-  "Tahoma",
-  "Impact",
-  "Trebuchet MS",
-  "Georgia",
-  "Times New Roman",
-  "Courier New",
-  "Brush Script MT",
-  "Comic Sans MS",
-  "Futura",
-  "Kodchasan",
-];
-
-function typeWriterWithCursor(text, elementId, delay = 100) {
-  let index = 0;
-  const element = document.getElementById(elementId);
-  const cursor = document.createElement("span"); // Create a blinking cursor
+// Typewriter effect with blinking cursor
+function typeWriterWithCursor(text, id, delay = 100) {
+  const el = document.getElementById(id);
+  let idx = 0;
+  const cursor = document.createElement("span");
   cursor.textContent = "_";
-  cursor.classList.add("blinking-cursor");
-  element.textContent = ""; // Clear the content
-  element.appendChild(cursor); // Add the cursor to the target element
-
-  function type() {
-    if (index < text.length) {
-      element.textContent = text.substring(0, index + 1); // Append the next character
-      element.appendChild(cursor); // Ensure the cursor remains at the end
-      index++;
-      setTimeout(type, delay); // Continue typing
+  cursor.className = "blinking-cursor";
+  el.textContent = "";
+  el.append(cursor);
+  (function type() {
+    if (idx < text.length) {
+      el.textContent = text.slice(0, ++idx);
+      el.append(cursor);
+      setTimeout(type, delay);
     } else {
-      cursor.remove(); // Remove cursor when typing is complete
+      cursor.remove();
     }
-  }
-
-  type();
+  })();
 }
-
-// Add blinking animation to cursor
-function addBlinkingCursorAnimation() {
+(function addCursorStyle() {
   const style = document.createElement("style");
   style.textContent = `
-      .blinking-cursor {
-        display: inline-block;
-        margin-left: 2px;
-        animation: blink 1s steps(2, start) infinite;
-      }
-      @keyframes blink {
-        0%, 50% {
-          opacity: 1;
-        }
-        51%, 100% {
-          opacity: 0;
-        }
-      }
-    `;
-  document.head.appendChild(style);
-}
+    .blinking-cursor { display:inline-block; margin-left:2px; animation:blink 1s steps(2,start) infinite; }
+    @keyframes blink { 0%,50% { opacity:1;} 51%,100% { opacity:0;} }
+  `;
+  document.head.append(style);
+})();
 
+document.addEventListener("DOMContentLoaded", () => {
+  const html = document.documentElement,
+    body = document.body;
+  // capture current scroll (should be 0)
+  window.scrollY = 0;
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const tl = gsap.timeline();
-  const cards = document.querySelectorAll(".card");
-  document.getElementsByTagName('html')[0].style.overflow = 'hidden';
-  document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-
-
-  // set logo animation pos and scale
-  tl.set("#skills-text", { opacity: 0 });
-
-  tl.set("#logo", {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    xPercent: -50,
-    yPercent: -50,
-    scale: 5,
+  // 1a) freeze the body in place
+  Object.assign(body.style, {
+    position: "fixed",
+    top: `-${scrollY}px`,
+    left: "0",
+    right: "0",
+    width: "100%",
+    height: "100%",
+    overflow: "hidden",
   });
 
+  // 1b) block wheel & touchmove
+  const preventScroll = (e) => e.preventDefault();
+  window.addEventListener("wheel", preventScroll, { passive: false });
+  window.addEventListener("touchmove", preventScroll, { passive: false });
 
+  // 2) build your intro timeline
+  const intro = gsap
+    .timeline({
+      // you can add defaults here if you want
+    })
+    .set("#logo", {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      xPercent: -50,
+      yPercent: -50,
+      scale: 5,
+    });
 
-  // Run your logo animation
+  const fonts = [
+    "Kodchasan",
+    "Arial",
+    "Verdana",
+    "Helvetica",
+    "Georgia",
+    "Times New Roman",
+    "Courier New",
+    "Brush Script MT",
+    "Comic Sans MS",
+    "Lucida Console",
+    "Tahoma",
+    "Impact",
+    "Trebuchet MS",
+    "Futura",
+  ];
+
+  // cycle fonts…
   fonts.forEach((font) => {
-    tl.to(".logo-text", {
-      fontFamily: font,
-      duration: 0.075,
+    intro.to(".logo-text", { fontFamily: font, duration: 0.075, ease: "none" });
+  });
+
+  // fade & remove the logo
+  intro
+    .to("#logo", { autoAlpha: 0, duration: 0.5, ease: "power1.out" })
+    .call(() => document.getElementById("logo").remove());
+
+  // 1c) when intro completes, unlock
+  intro.eventCallback("onComplete", () => {
+    // remove the scroll blockers
+    window.removeEventListener("wheel", preventScroll);
+    window.removeEventListener("touchmove", preventScroll);
+
+    // un‑fix the body
+    Object.assign(body.style, {
+      position: "",
+      top: "",
+      left: "",
+      right: "",
+      width: "",
+      overflow: "",
+    });
+
+    // jump back to where we were (still 0)
+    window.scrollTo(0, scrollY);
+
+    // now kick off your main timeline
+    mainTimeline.play();
+  });
+
+  // 4) build your main timeline, but keep it paused
+  const mainTimeline = gsap.timeline({ paused: true });
+
+  mainTimeline
+    .from("#navbar", { y: -24, opacity: 0, duration: 1, ease: "power2.inOut" })
+    .from(
+      "#hero-text",
+      {
+        x: -24,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        onStart: () => {
+          typeWriterWithCursor("Farah Abdi,", "name", 150);
+          document.getElementById("name").style.visibility = "visible";
+        },
+        // **remove** any onComplete here that touches overflow
+      },
+      "<"
+    )
+    .from(
+      "#cardcontainer",
+      { x: 24, opacity: 0, duration: 1, ease: "power2.inOut" },
+      "<"
+    );
+
+  // Cards animation on scroll
+  const cards = gsap.utils.toArray(".card");
+  const cols = 4,
+    rows = 3;
+  const { width, height } = cardContainer.getBoundingClientRect();
+  const cardW = width / cols,
+    cardH = height / rows + 64;
+
+  // Tailwind 2xl breakpoint is 1536px
+  if (window.matchMedia("(min-width: 1536px)").matches) {
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#main",
+        start: "top top",
+        end: "center",
+        pin: "#hero",
+        pinSpacing: true,
+        scrub: 1,
+        // markers: true, // optional
+      },
+    });
+
+    tl2.to(cards, {
+      rotation: (i) =>
+        (i - (cards.length - 1) / 2) * (112 / (cards.length - 1)),
+      x: (i) => (i - (cards.length - 1) / 2) * (24 / 6),
+      duration: 100,
       ease: "none",
+      transformOrigin: "bottom center",
+      stagger: { amount: 0.5, from: "start" },
+    });
+  }
+
+  // grab title + all skill pills
+  const revealEls2 = document.querySelectorAll(
+    "#skills .hero-text, #skills .skill"
+  );
+
+  revealEls2.forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 50, // come up from bottom
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%", // when el top hits 80% down viewport
+        toggleActions: "play none none none",
+        // markers: true,    // uncomment to debug
+      },
     });
   });
 
-  // put logo back in navbar
-  tl.to("#logo", {
-    position: "absolute",
-    top: "4rem",
-    left: "7rem",
-    scale: 1,
-    duration: 1,
-    ease: "power2.inOut",
-    
-  });
-
-  // bring in the rest of navbar from the top
-  tl.from("#nav, #icons", {
-    y: -24,
-    duration: 1,
-    opacity: 0,
-    ease: "power2.inOut",
-  });
-
-  // bring in the rest of navbar from the top
-  tl.from("#hero-text", {
-    x: -24,
-    duration: 1,
-    opacity: 0,
-    ease: "power2.inOut",
-    onStart: () => {
-      addBlinkingCursorAnimation();
-      typeWriterWithCursor("Farah Abdi,", "name", 150);
-      document.getElementById("name").style.visibility = "visible";
-    },
-    onComplete: () => {
-      document.getElementsByTagName('html')[0].style.overflow = 'visible'
-      document.getElementsByTagName('body')[0].style.overflow = 'visible'
-    }
-  });
-
-  // Adding '#cardcontainer' to the timeline at the same time as '#hero-text'
-  tl.from(
-    "#cardcontainer",
-    {
-      x: 24,
+  revealEls.forEach((el, i) => {
+    // Heading = index 0; cards start at 1
+    const isHeading = i === 0;
+    const vars = {
       opacity: 0,
       duration: 1,
-      ease: "power2.inOut",
-    },
-    "<"
-  ); // Start at the same time as '#hero-text'
-  tl.from("progress", {
-    x: -24,
-    opacity: 0,
-    duration: 1,
-    ease: "power2.inOut",
-    onComplete: () => {
-      tl.to("progress", {
-        value: 100,
-        ease: "none",
-        scrollTrigger: { scrub: 1 }
-      });
-    },
-  });
-
-  home.addEventListener('click', () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: 0
-    });
-  });
-  
-  skills.addEventListener('click', () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: 1036
-    });
-  });
-
-  about.addEventListener('click', () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: 1736
-    });
-  })
-  
-  projects.addEventListener('click', () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: 2536
-    });
-  })
-  experience.addEventListener('click', () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: 6000
-    });
-  })
-
-  
-  
-
-  
-  
-
-  const tl2 = gsap.timeline({
-    scrollTrigger: {
-      scrub: 1,
-      trigger: "#main",
-      toggleActions: "play none none reverse",
-      pin: true,
-      end: "+=6000"
-    },
-  
-  });
-
-  tl2.to(cards, {
-    rotation: (i) => {
-      const anglePerCard = 112 / (cards.length - 1); // 180 degrees for the arc
-      return (i - (cards.length - 1) / 2) * anglePerCard;
-    },
-    x: (i) => {
-      const spread = 24; // Adjust the spread to control how far the cards are apart
-      return (i - (cards.length - 1) / 2) * (spread / 6); // Adjust the spacing per card
-    },
-    ease: "none",
-    duration: 400,
-    transformOrigin: "bottom center", // Set the transform origin to the center of the card
-    stagger: {
-      amount: 0.5, // Stagger effect
-      from: "start", // Animation starts from the top-left corner
-    },
-  });
-
-  // Hover effect integration with GSAP
-  // cards.forEach((card) => {
-  //   card.addEventListener("mouseenter", () => {
-  //     gsap.to(card, {
-  //       y: -36, // Move the card up on hover
-  //       duration: 0.3,
-  //       ease: "power1.out",
-  //     });
-  //   });
-
-  //   card.addEventListener("mouseleave", () => {
-  //     gsap.to(card, {
-  //       y: 0, // Return the card to its original position
-  //       duration: 0.3,
-  //       ease: "power1.out",
-  //     });
-  //   });
-  // });
-
-  tl2.to("#hero-text", {
-    y: -1000,
-    duration: 800,
-    ease: "power2.inOut",
-  });
-  tl2.to(
-    "#skills-text",
-    {
-      y: -620,
-      opacity: 1,
-      duration: 800,
-      ease: "power2.inOut",
-    },
-    "<"
-  );
-
-  const container = document.getElementById("cardcontainer");
-  // Get parent dimensions
-  const containerWidth = container.offsetWidth;
-  const containerHeight = container.offsetHeight;
-
-  // Define grid
-  const rows = 3;
-  const columns = 4;
-  const cardWidth = containerWidth / columns; // Width of each card
-  const cardHeight = containerHeight / rows;
-
-  const verticalGap = 64; // Height of each card
-
-  // Turn cards into grid
-  tl2.to(
-    cards,
-    {
-      rotation: 0,
-      ease: "power2.inOut",
-      x: (i) => (i % columns) * cardWidth - 312, // X position based on column
-      y: (i) => Math.floor(i / columns) * (cardHeight + verticalGap) - 296, // Add vertical gap
-      scale: 0.5, // Set card height
-      stagger: {
-        amount: 0.5, // Stagger effect
-        from: "start", // Animation starts from the top-left corner
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%", // when el top hits 80% of viewport
+        toggleActions: "play none none none",
       },
-      duration: 800,
-    },
-    "<"
-  );
+    };
 
-  const cardarr = Array.from(cards);
-  const half = Math.ceil(cards.length / 2); // Determine the split point
-  const group1 = cardarr.slice(0, half); // First group of cards
-  const group2 = cardarr.slice(half); // Second group of cards
-  let isReversed = false;
-  // Timeline for splitting and shuffling
-  tl2.to(group1, {
-    x: (i) => -150 - i * 10, // Move group1 to the left
-    y: (i) => -i * 10, // Slight stagger upward
-    duration: 400,
-    scale: 1,
-    ease: "power2.inOut",
-    stagger: 0.1,
-  });
-
-  // Move group2 to the right
-  tl2.to(
-    group2,
-    {
-      x: (i) => 150 + i * 10, // Move group2 to the right
-      y: (i) => -i * 10, // Slight stagger upward
-      duration: 400,
-      scale: 1,
-      ease: "power2.inOut",
-      stagger: 0.1,
-    },
-    "<"
-  ); // Sync with group1 movement
-
-  // Interleave function
-  const interleave = (group1, group2) => {
-    const maxLength = Math.max(group1.length, group2.length);
-    const interleaved = [];
-
-    for (let i = 0; i < maxLength; i++) {
-      if (group1[i]) interleaved.push(group1[i]); // Add one from group1
-      if (group2[i]) interleaved.push(group2[i]); // Add one from group2
+    if (isHeading) {
+      vars.y = 50; // come up from bottom
+    } else {
+      // alternate cards: 1st card (i=1) from left, next from right, etc.
+      const cardIndex = i - 1;
+      vars.x = cardIndex % 2 === 0 ? -100 : 100;
     }
-    return interleaved;
-  };
 
-  // Create interleaved array
-  const interleavedCards = interleave(group1, group2);
-
-  // Animate interleaving with z-index updates
-  tl2.to(interleavedCards, {
-    x: 0,
-    y: 0,
-    rotation: 0,
-    z: (index) => index, // Incremental z-index for proper stacking
-    duration: 400,
-    ease: "power2.inOut",
-    stagger: 0.1, // Create interleaving effect
-    onStart: () => {
-      // Ensure zIndex matches during the animation (optional for modern browsers)
-      interleavedCards.forEach((card, index) => {
-        gsap.set(card, { zIndex: index });
-      });
-    },
-    onReverseComplete: () => {
-      // Reset z-index when reversing
-      interleavedCards.forEach((card) => {
-        gsap.set(card, { zIndex: 0 });
-      });
-    },
+    gsap.from(el, vars);
   });
-  tl2.to(
-    "#skills-text",
-    {
-      y: -2000,
-      duration: 400,
-      ease: "power2.inOut",
-    },
-    "<"
-  );
-  tl2.to(
-    "#about-text",
-    {
-      y: -1240,
-      opacity: 1,
-      duration: 400,
-      ease: "power2.inOut",
-    },
-    "<"
-  );
-  tl2.to("#about-text", {
-    y: -2000,
-    duration: 400,
-    ease: "power2.inOut",
-  });
-  tl2.to(
-    "#cardcontainer",
-    {
-      y: -2000,
-      duration: 600,
-      ease: "power2.inOut",
-    },
-    "<"
-  );
-  
-  tl2.from('#ace-card1', {
-    x:-240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<3')
-  tl2.from('#ace-display1', {
-    x:240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<')
 
-  tl2.to(
-    "#ace-container1",
-    {
-      y: -3800,
-      duration: 600,
-      ease: "power2.inOut",
-    },
-  );
+  // 1) Force initial state: hidden & 50px down
+  gsap.set("#experience .exp-card", { opacity: 0, y: 50 });
 
-  tl2.from('#ace-card2', {
-    x:-240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<3')
-  tl2.from('#ace-display2', {
-    x:240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<')
-
-
-  tl2.to(
-    "#ace-container2",
-    {
-      y: -3800,
-      duration: 600,
-      ease: "power2.inOut",
-    },
-  );
-
-  tl2.from('#ace-card3', {
-    x:-240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<3')
-  tl2.from('#ace-display3', {
-    x:240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<')
-  .call(() => {
-    document.querySelectorAll('.ace3-vid').forEach(video => {
-      video.play();
+  // 2) Create one ScrollTrigger per card
+  document.querySelectorAll("#experience .exp-card").forEach((card, i) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: "top 85%", // when the top of card hits 85% viewport
+      onEnter: () => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          // optional stagger if you want a tiny delay
+          // delay: i * 0.1
+        });
+      },
+      // markers: true     // <-- uncomment to debug positions
     });
-  }, null, '<');
+  });
+  // smooth-scroll nav
+const navItems = document.querySelectorAll("#nav p");
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const targetId = item.id;
+    // scroll so the top of that section lands just under the navbar
+    gsap.to(window, {
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTo: {
+        y: `#${targetId}`,
+        offsetY: 80  // adjust if your navbar height changes
+      }
+    });
 
-  tl2.to(
-    "#ace-container3",
-    {
-      y: -6000,
-      duration: 600,
-      ease: "power2.inOut",
-    },
-  );
-
-  tl2.from('#ace-card4', {
-    x:-240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<3')
-  tl2.from('#ace-display4', {
-    x:240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<')
-
-  tl2.to(
-    "#ace-container4",
-    {
-      y: -6000,
-      duration: 600,
-      ease: "power2.inOut",
-    },
-  );
-
-  tl2.from('.joker', {
-    y:240,
-    opacity: 0,
-    duration: 1000,
-    ease: "power2.inOut",
-  }, '<3')
-  
-
-  
-
-
-
-  
+    // if mobile menu is open, close it
+    navMenu.classList.add("hidden");
+  });
 });
+
+});
+

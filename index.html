@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farah's Porfolio</title>
+    <title>Farah's Portfolio</title>
     <link rel="icon" href="./favicon.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
@@ -18,538 +18,425 @@
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
   </head>
-  <body class="ksb text-white h-screen">
+  <body class="ksb text-white">
     <div
       id="main"
-      class="w-full flex flex-col h-screen py-12 px-24 gap-48 bg-black"
+      class="w-full flex flex-col py-12 px-12 md:px-24 gap-20 md:gap-40 bg-black"
     >
-      <progress max="100" class="rotate-90" value="0"></progress>
-
-      <div id="navbar" class="flex justify-between items-center flex-row">
-        <!-- Real Logo Anim then move to top left -->
+      <!-- Nav Bar -->
+      <section
+        id="navbar"
+        class="sticky z-50 top-12 p-4 border-2 border-neutral-700 bg-neutral-900 rounded-lg flex justify-between items-center flex-row"
+      >
         <div
-          id="logo"
-          class="grid grid-cols-2 h-8 w-8 ksb grid-rows-2 gap-0 text-sm font-bold"
-        >
-          <div class="text-center logo-text">A</div>
-          <div class="text-center logo-text">B</div>
-          <div class="text-center logo-text">D</div>
-          <div class="text-center logo-text">I</div>
-        </div>
-        <!-- Small placeholder logo on the top-left -->
-        <div
-          class="grid hid grid-cols-2 h-8 w-8 grid-rows-2 gap-0 text-sm font-bold"
+          class="grid grid-cols-2 h-8 w-8 grid-rows-2 gap-0 text-sm font-bold"
         >
           <div class="text-center">A</div>
           <div class="text-center">B</div>
           <div class="text-center">D</div>
           <div class="text-center">I</div>
         </div>
-        <!-- Full name in the center -->
-        <div id="nav" class="flex flex-row gap-6 text-sm">
-          <p id="home" class="hover:scale-[120%] cursor-pointer transition-all">
-            Home
-          </p>
-          <p
-            id="skills"
+        <div
+          id="nav"
+          class="flex flex-col md:flex md:flex-row absolute md:static top-20 right-0 md:top-auto md:right-auto bg-neutral-900 border-2 border-neutral-700 md:border-0  p-4 md:p-0 rounded-lg gap-4 md:gap-6 text-sm"
+        >
+          <a
+            href="#hero"
             class="hover:scale-[120%] cursor-pointer transition-all"
+            >Home</a
           >
-            Skills
-          </p>
-          <p
-            id="about"
+          <a
+            href="#featured-projects"
             class="hover:scale-[120%] cursor-pointer transition-all"
+            >Projects</a
           >
-            About
-          </p>
-          <p
-            id="projects"
+          <a
+            href="#skills"
             class="hover:scale-[120%] cursor-pointer transition-all"
+            >Skills</a
           >
-            Projects
-          </p>
-          <p
-            id="experience"
+
+          <a
+            href="#experience"
             class="hover:scale-[120%] cursor-pointer transition-all"
+            >Experience</a
           >
-            Experience
-          </p>
         </div>
 
-        <!-- Icons on the top-right -->
-        <div id="icons" class="text-white flex flex-row gap-12">
-          <a target="_blank" href="https://www.github.com/Aabdi22k/"
-            ><i
-              class="text-lg bi bi-github hover:scale-[120%] cursor-pointer transition-all"
-            ></i
-          ></a>
-          <a target="_blank" href="https://www.linkedin.com/in/faabdi/"
-            ><i
-              class="text-lg bi bi-linkedin hover:scale-[120%] cursor-pointer transition-all"
-            ></i
-          ></a>
+        <!-- ICONS: sun + hamburger -->
+        <div class="flex gap-8 justify-center items-center">
+          <i
+            id="hamburger"
+            class="text-xl md:hidden text-white bi bi-list hover:scale-[120%] cursor-pointer transition-all"
+          ></i>
         </div>
-      </div>
+      </section>
 
-      <div id="hero" class="flex flex-row w-full items-center">
-        <div class="w-[56%] flex flex-col">
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="scroll-mt-36 flex pt-8 flex-col 2xl:flex-row w-full items-center text-center 2xl:text-left gap-24"
+      >
+        <div
+          class="w-full 2xl:w-full flex flex-col items-center 2xl:items-start"
+        >
           <div id="hero-text" class="flex flex-col gap-12">
-            <div class="flex flex-col gap-2">
-              <div class="flex flex-col">
-                <span class="text-[5em] kr">Hello, I'm</span>
-                <span id="name" class="text-[5em] hid kr">Farah Abdi,</span>
-                <span class="text-[5em] kr">Software Engineer.</span>
+            <div class="flex 2xl:items-start items-center flex-col gap-12">
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-col">
+                  <span class="kb hero-text">Hello, I'm</span>
+                  <span id="name" class="hid kb hero-text">Farah Abdi,</span>
+                  <span class="kb hero-text">Software Engineer.</span>
+                </div>
+                <span class="kr text-neutral-400 hero-subtext"
+                  >BS Computer Science & Engineering, 2028 @ The Ohio State
+                  University
+                </span>
               </div>
-              <span class="kr text-[1.5em] text-neutral-400"
-                >BS Computer Science & Engineering, 2028 @ The Ohio State
-                University</span
+              <div class="flex flex-row gap-6">
+                <a
+                  class="btn"
+                  target="_blank"
+                  href="https://www.github.com/Aabdi22k/"
+                >
+                  <i
+                    class="text-lg bi bi-github hover:scale-[120%] cursor-pointer transition-all"
+                  >
+                  </i>
+                </a>
+                <a
+                  class="btn"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/faabdi/"
+                  ><i
+                    class="text-lg bi bi-linkedin hover:scale-[120%] cursor-pointer transition-all"
+                  ></i
+                ></a>
+                <a
+                  class="btn"
+                  href="./assets/resume.pdf"
+                  download="Farah_Abdi_Resume.pdf"
+                  ><span class="cursor-pointer">Resume</span></a
+                >
+              </div>
+              <div
+                class="scroll-indicator-container 2xl:absolute flex justify-center 2xl:left-[100%] 2xl:top-[120%] pointer-events-none"
               >
+                <div
+                  class="scroll-indicator flex flex-col items-center -gap-16"
+                >
+                  <i class="bi bi-chevron-down arrow"></i>
+                  <i class="bi bi-chevron-down arrow"></i>
+                </div>
+              </div>
             </div>
-            <div
-              class="hover:scale-[110%] transition-all ease-in-out flex w-fit px-4 py-3 rounded-lg"
-            ></div>
           </div>
         </div>
         <div
           id="cardcontainer"
-          class="w-[52%] h-full flex items-center justify-center"
+          class="hidden 2xl:flex w-full 2xl:w-full h-full items-center justify-center"
         ></div>
-      </div>
-
-      <div id="skills-text" class="gap-6 justify-center flex flex-col w-[56%]">
-        <span class="text-[5em] kr">What's in My Deck</span>
-        <span class="text-[1.5em] text-neutral-400 w-[75%] kr">
-          A curated collection of skills that form the foundation of my work as
-          a Software Engineer. These skills represent the tools, technologies,
-          and expertise I’ve developed to build efficient, reliable, and
-          innovative solutions. From programming languages to frameworks, each
-          skill plays a vital role in creating meaningful and impactful results.
-        </span>
-      </div>
-
-      <div id="about-text" class="gap-6 justify-center flex flex-col w-[56%]">
-        <span class="text-[5em] kr">About Me</span>
-        <span class="text-[1.5em] text-neutral-400 w-[75%] kr">
-          I’m an aspiring Software Engineer with a passion for problem-solving
-          and a drive to build meaningful solutions. With a focus on developing
-          my skills in modern technologies and learning through hands-on
-          experience, I’m committed to creating efficient, user-focused
-          solutions. I approach every challenge with curiosity, determination,
-          and a desire to grow.
-        </span>
-      </div>
-
-      <div
-        id="ace-container1"
-        class="w-full flex flex-row items-center pl-16 justify-between"
+      </section>
+      <!-- Featured Project -->
+      <section
+        id="featured-projects"
+        class="scroll-mt-36 flex flex-col gap-24 items-center justify-center"
       >
-        <div id="ace-card1">
-          <span class="absolute top-[1rem] left-[1rem]">A</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180">A</span>
-          <div
-            class="h-full py-12 flex flex-col items-center gap-2 justify-center w-[76%]"
-          >
-            <span>Sparkx Chat</span>
-            <span class="text-[0.5em] kr text-neutral-200 leading-relaxed"
-              >A dynamic live messaging platform built using React for the web
-              and React Native for mobile, supported by a unified backend
-              powered by Node.js with Express.js and MongoDB. Key features
-              include real-time messaging enabled by Socket.io and secure
-              authentication through JWT.</span
-            >
-            <div class="flex flex-row gap-4 pt-2">
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://sparkxchat.vercel.app"
-                >Live App</a
-              >
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://github.com/Aabdi22k/Sparkx-Chat"
-                >Learn More</a
-              >
+        <span class="hero-text">Featured Projects</span>
+        <div class="projects-container grid grid-cols-1 2xl:grid-cols-2 gap-16">
+          <div class="project-card overflow-visible">
+            <div class="project-image md:mt-0 md:-ml-20 -mt-20">
+              <img src="./assets/SPOP 2.png" alt="Sparkx Chat screenshot" />
             </div>
-          </div>
-        </div>
-        <div
-          id="ace-display1"
-          class="flex w-[68%] h-[60vh] rounded-2xl bg-neutral-800 py-12 justify-center items-center gap-4"
-        >
-          <span class="absolute top-[1rem] left-[1rem]">Sparkx</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180"
-            >Sparkx</span
-          >
-          <img
-            style="height: 422px; width: 212px"
-            src="./sparkx mobile 1.png"
-            alt="Sparkx Mobile 1"
-          />
-          <img
-            style="height: 431px; width: 606px"
-            src="./sparkx desktop.png"
-            alt="Sparkx desktop"
-          />
-          <img
-            style="height: 422px; width: 212px"
-            src="./sparkx mobile 2.png"
-            alt="Sparkx Mobile 2"
-          />
-        </div>
-      </div>
-
-      <div
-        id="ace-container2"
-        class="w-full flex flex-row items-center pl-16 justify-between"
-      >
-        <div id="ace-card2">
-          <span class="absolute top-[1rem] left-[1rem]">A</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180">A</span>
-          <div
-            class="h-full py-12 flex flex-col items-center gap-2 justify-center w-[76%]"
-          >
-            <span>2K Scout</span>
-            <span class="text-[0.5em] kr text-neutral-200 leading-relaxed"
-              >A responsive NBA Fantasy draft scouting application built using
-              the MERN stack. Webscraping with Beautiful Soup 4 & python was
-              used to get player data. Key features include position-specific
-              player lists, real-time team updates, and seamless player
-              management through intuitive "Check" and "Minus"
-              functionality.</span
+            <div
+              class="project-content md:items-start items-center flex flex-col"
             >
-            <div class="flex flex-row gap-4 pt-2">
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://2kscout.vercel.app"
-                >Live App</a
-              >
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://github.com/Aabdi22k/2kScout"
-                >Learn More</a
-              >
-            </div>
-          </div>
-        </div>
-        <div
-          id="ace-display2"
-          class="flex w-[68%] h-[60vh] rounded-2xl bg-neutral-800 py-12 justify-center items-center gap-4"
-        >
-          <span class="absolute top-[1rem] left-[1rem]">2K Scout</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180"
-            >2K Scout</span
-          >
-          <img
-            class="mr-6"
-            style="height: 294px; width: 145px"
-            src="./iPhone 13 Pro (2).png"
-            alt="Sparkx Mobile 1"
-          />
-          <img
-            style="height: 322px; width: 231px"
-            src="./iPad Pro 11 Inches.png"
-            alt="Sparkx Mobile 2"
-          />
-          <img
-            style="height: 431px; width: 606px"
-            src="./2kscout safari.png"
-            alt="Sparkx desktop"
-          />
-        </div>
-      </div>
-
-      <div
-        id="ace-container3"
-        class="w-full flex flex-row items-center pl-16 justify-between"
-      >
-        <div id="ace-card3">
-          <span class="absolute top-[1rem] left-[1rem]">A</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180">A</span>
-          <div
-            class="h-full py-12 flex flex-col items-center gap-2 justify-center w-[76%]"
-          >
-            <span class="text-center">Pathfinding Visualizer</span>
-            <span class="text-[0.5em] kr text-neutral-200 leading-relaxed"
-              >The Pathfinding Algorithms Visualizer is an interactive tool
-              built with Pygame that demonstrates how various pathfinding
-              algorithms explore a 50x50 grid to find the shortest path between
-              a start and end point while avoiding obstacles. A visualization of
-              three famous traversal algorithms Astar, Djikstra, and Greedy BFS
-              can be seen to the right. start node (orange), end node (blue),
-              and barriers (black), node being considered (green), closed nodes
-              (red), final path (purple).</span
-            >
-            <div class="flex flex-row gap-4 pt-2">
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://github.com/Aabdi22k/2kScout"
-                >Learn More</a
-              >
-            </div>
-          </div>
-        </div>
-        <div
-          id="ace-display3"
-          class="flex w-[68%] h-[60vh] rounded-2xl bg-neutral-800 py-12 justify-center items-center gap-4"
-        >
-          <span class="absolute top-[1rem] left-[1rem]"
-            >Pathfinding Visualizer</span
-          >
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180"
-            >Pathfinding Visualizer</span
-          >
-          <div class="flex flex-col text-center gap-6">
-            <span>Astar Algorithm</span>
-            <video class="ace3-vid" width="320" height="240">
-              <source src="Astar.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="flex flex-col text-center gap-6">
-            <span>Djikstra Algorithm</span>
-            <video class="ace3-vid" width="320" height="240">
-              <source src="Djikstra recording.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="flex flex-col text-center gap-6">
-            <span>Greedy BFS Algorithm</span>
-            <video class="ace3-vid" width="320" height="240">
-              <source src="Greedy.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="ace-container4"
-        class="w-full flex flex-row items-center pl-16 justify-between"
-      >
-        <div id="ace-card4">
-          <span class="absolute top-[1rem] left-[1rem]">A</span>
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180">A</span>
-          <div
-            class="h-full py-12 flex flex-col items-center gap-2 justify-center w-[76%]"
-          >
-            <span class="text-center">Solar Panel Output Predictor</span>
-            <span class="text-[0.5em] kr text-neutral-200 leading-relaxed"
-              >Solar Energy Output Predictor is a machine learning web app that
-              forecasts 5-day solar panel output using real weather and solar
-              radiation data. Users enter their panel size and efficiency for
-              custom predictions. Built with Python, Streamlit, and
-              scikit-learn, it uses Open-Meteo and NREL APIs and includes error
-              analysis for prediction confidence.</span
-            >
-            <div class="flex flex-row gap-4 pt-2">
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://github.com/Aabdi22k/2kScout"
-                >Live App</a
-              >
-              <a
-                target="_blank"
-                class="text-[0.5em] kr text-neutral-400 text-center text-red-800"
-                href="https://github.com/Aabdi22k/2kScout"
-                >Learn More</a
-              >
-            </div>
-          </div>
-        </div>
-        <div
-          id="ace-display4"
-          class="flex w-[68%] h-[60vh] rounded-2xl bg-neutral-800 py-12 justify-center items-center gap-4"
-        >
-          <span class="absolute top-[1rem] left-[1rem]"
-            >Solar Panel Output Predictor</span
-          >
-          <span class="absolute bottom-[1rem] right-[1rem] rotate-180"
-            >Solar Panel Output Predictor</span
-          >
-          <img
-            style="width: 500px; height: 450px"
-            src="./SPOP 1.png"
-            alt="Sparkx Mobile 1"
-          />
-          <img
-            style="width: 550px; height: 450px"
-            src="./SPOP 2.png"
-            alt="Sparkx Mobile 2"
-          />
-        </div>
-      </div>
-
-      <div
-        id="joker-container"
-        class="w-full flex flex-row items-center pl-16 justify-between"
-      >
-        <div class="joker">
-          <!-- Vertical 'JOKER' top-left going down -->
-          <div
-            class="absolute top-[1rem] left-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px]"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
-
-          <!-- Vertical 'JOKER' bottom-right going up (rotated 180) -->
-          <div
-            class="absolute bottom-[1rem] right-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px] rotate-180"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
-
-          <!-- Experience Content -->
-          <div
-            class="h-full py-12 flex flex-col items-center gap-4 justify-center w-[80%] mx-auto text-center"
-          >
-            <span class="text-sm font-semibold text-white"
-              >Software Engineer Intern</span
-            >
-            <span
-              class="text-[0.6em] text-neutral-300 leading-relaxed font-medium"
-            >
-              True Interpretation and Consultation Services LLC · Columbus,
-              OH<br />
-              <em>May 2025 – August 2025 (Expected)</em><br /><br />
-              <p>
-                Cut scheduling time by 60%, secured client data with Supabase
-                policies, and sped up deployments 75% using AWS CI/CD.
+              <h3>Solar Predictor</h3>
+              <p class="description">
+                A Solar Panel Output Predictor which uses a model to predict GHI
+                then calculates power output based on solar array size and
+                solarp panel efficieny,
               </p>
-            </span>
-            <div class="text-xs text-neutral-400 pt-2">
-              Tech: React, Supabase, AWS
+              <div class="tech-list">
+                <span>Python</span>
+                <span>TensorFlow</span>
+                <span>Scikit‑Learn</span>
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn">Live App</a>
+                <a href="#" class="btn">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card overflow-visible">
+            <div class="project-image md:-mr-20 md:mt-0 -mt-20">
+              <img
+                src="./assets/2kscout safari.png"
+                alt="Sparkx Chat screenshot"
+              />
+            </div>
+            <div
+              class="project-content md:items-start items-center flex flex-col"
+            >
+              <h3>2k Scout</h3>
+              <p class="description">
+                A fantasy basketball team building tool which uses NBA player 2k
+                ratings to help you draft your team.
+              </p>
+              <div class="tech-list">
+                <span>React</span>
+                <span>Web-Scraping</span>
+                <span>TailwindCSS</span>
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card overflow-visible">
+            <div class="project-image md:mt-0 md:-ml-20 -mt-20">
+              <img
+                src="./assets/sparkx desktop.png"
+                alt="Sparkx Chat screenshot"
+              />
+            </div>
+            <div
+              class="project-content md:items-start items-center flex flex-col"
+            >
+              <h3>Sparkx Chat</h3>
+              <p class="description">
+                A live messaging app that enables seamless real‑time
+                communication across web and mobile platforms.
+              </p>
+              <div class="tech-list">
+                <span>React</span>
+                <span>React Native</span>
+                <span>MongoDB</span>
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn">Live App</a>
+                <a href="#" class="btn">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="joker">
-          <!-- JOKER Vertical (Top Left) -->
-          <div
-            class="absolute top-[1rem] left-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px]"
+      <!-- Technical Skills -->
+      <section
+        id="skills"
+        class="scroll-mt-36 flex flex-col gap-12 items-center py-12"
+      >
+        <span class="hero-text">Technical Skills</span>
+        <div
+          class="skills-container flex flex-wrap justify-center gap-4 px-4 max-w-4xl"
+        >
+          <!-- Languages -->
+          <span class="skill"
+            ><i class="devicon-python-plain colored"></i>Python</span
           >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+          <span class="skill"
+            ><i class="devicon-java-plain colored"></i>Java</span
+          >
+          <span class="skill"
+            ><i class="devicon-csharp-plain colored"></i>C#</span
+          >
+          <span class="skill"
+            ><i class="devicon-javascript-plain colored"></i>JavaScript</span
+          >
+          <span class="skill"
+            ><i class="devicon-html5-plain colored"></i>HTML5</span
+          >
+          <span class="skill"
+            ><i class="devicon-css3-plain colored"></i>CSS3</span
+          >
+          <span class="skill"
+            ><i class="devicon-typescript-plain colored"></i>TypeScript</span
+          >
 
-          <!-- JOKER Vertical Rotated (Bottom Right) -->
-          <div
-            class="absolute bottom-[1rem] right-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px] rotate-180"
+          <!-- Frameworks -->
+          <span class="skill"
+            ><i class="devicon-react-original colored"></i>React</span
           >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+          <span class="skill"
+            ><i class="devicon-react-original colored"></i>React Native</span
+          >
+          <span class="skill"
+            ><i class="devicon-nodejs-plain colored"></i>Node.js</span
+          >
+          <span class="skill"
+            ><i class="devicon-mongodb-plain colored"></i>MongoDB</span
+          >
+          <span class="skill"
+            ><i class="devicon-tailwindcss-plain colored"></i>TailwindCSS</span
+          >
+          <span class="skill"
+            ><i class="devicon-express-original colored"></i>Express.js</span
+          >
+          <span class="skill"
+            ><i class="devicon-django-plain colored"></i>Django</span
+          >
 
-          <!-- Placeholder Content -->
-          <div
-            class="h-full py-12 flex flex-col items-center gap-4 justify-center w-[76%] text-center"
+          <!-- Libraries -->
+          <span class="skill"
+            ><i class="devicon-tensorflow-original colored"></i>TensorFlow</span
           >
-            <span class="text-neutral-300 text-sm"
-              >More experience coming soon.</span
-            >
-            <span class="text-[0.5em] kr text-neutral-500 leading-relaxed">
-              This spot is reserved for future roles and contributions. Stay
-              tuned.
-            </span>
-          </div>
+          <span class="skill"
+            ><i class="devicon-pandas-plain colored"></i>Pandas</span
+          >
+          <span class="skill"
+            ><i class="devicon-matplotlib-plain colored"></i>Matplotlib</span
+          >
+          <span class="skill"
+            ><i class="devicon-scikitlearn-plain colored"></i>scikit‑learn</span
+          >
+          <span class="skill"
+            ><i class="devicon-pytorch-original colored"></i>PyTorch</span
+          >
+
+          <!-- Developer Tools -->
+          <span class="skill"
+            ><i class="devicon-docker-plain colored"></i>Docker</span
+          >
+          <span class="skill"
+            ><i class="devicon-pycharm-plain colored"></i>PyCharm</span
+          >
+          <span class="skill"
+            ><i class="devicon-intellij-plain colored"></i>IntelliJ IDEA</span
+          >
+          <span class="skill"
+            ><i class="devicon-git-plain colored"></i>Git</span
+          >
+          <span class="skill"
+            ><i class="devicon-vscode-plain colored"></i>VS Code</span
+          >
+          <span class="skill"
+            ><i class="devicon-figma-plain colored"></i>Figma</span
+          >
+          <span class="skill"
+            ><i class="devicon-amazonwebservices-plain colored"></i>AWS</span
+          >
         </div>
-        <div class="joker">
-          <!-- JOKER Vertical (Top Left) -->
-          <div
-            class="absolute top-[1rem] left-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px]"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+      </section>
 
-          <!-- JOKER Vertical Rotated (Bottom Right) -->
-          <div
-            class="absolute bottom-[1rem] right-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px] rotate-180"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+      <!-- professIONAL EXPERIENCE -->
+      <section
+        id="experience"
+        class="scroll-mt-36 flex flex-col gap-12 items-center py-20 w-full max-w-4xl mx-auto"
+      >
+        <span class="hero-text">Professional Experience</span>
 
-          <!-- Placeholder Content -->
-          <div
-            class="h-full py-12 flex flex-col items-center gap-4 justify-center w-[76%] text-center"
-          >
-            <span class="text-neutral-300 text-sm"
-              >More experience coming soon.</span
+        <div class="flex flex-col gap-12 w-full">
+          <!-- Start EXP Block -->
+          <div class="exp-card">
+            <div
+              class="bg-neutral-900 border-2 border-neutral-700 p-6 rounded-lg flex flex-col gap-4"
             >
-            <span class="text-[0.5em] kr text-neutral-500 leading-relaxed">
-              This spot is reserved for future roles and contributions. Stay
-              tuned.
-            </span>
-          </div>
-        </div>
-        <div class="joker">
-          <!-- JOKER Vertical (Top Left) -->
-          <div
-            class="absolute top-[1rem] left-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px]"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+              <!-- Mobile layout (≤640px) -->
+              <div
+                class="block sm:hidden flex flex-col items-center gap-2 text-center"
+              >
+                <span class="text-sm">May 2025 – Aug 2025  •  Columbus, OH</span>
+                <h3 class="ksb text-xl">Software Engineering Intern</h3>
+                <p class="kb text-neutral-200 text-sm">
+                  True Interpretation & Consultation Services
+                </p>
+              </div>
 
-          <!-- JOKER Vertical Rotated (Bottom Right) -->
-          <div
-            class="absolute bottom-[1rem] right-[1rem] flex flex-col text-[0.6em] font-bold text-white tracking-wider space-y-[2px] rotate-180"
-          >
-            <span>J</span>
-            <span>O</span>
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-          </div>
+              <!-- Desktop layout (>640px) -->
+              <div class="hidden sm:block">
+                <div class="flex justify-between text-sm">
+                  <h3 class="ksb text-xl">Software Engineering Intern</h3>
+                  <span>May 2025 – Aug 2025</span>
+                </div>
+                <div class="flex justify-between kb text-neutral-200 text-sm">
+                  <p>True Interpretation & Consultation Services</p>
+                  <span>Columbus, OH</span>
+                </div>
+              </div>
 
-          <!-- Placeholder Content -->
-          <div
-            class="h-full py-12 flex flex-col items-center gap-4 justify-center w-[76%] text-center"
-          >
-            <span class="text-neutral-300 text-sm"
-              >More experience coming soon.</span
+              <!-- Description (center on mobile, left on desktop) -->
+              <p class="kr text-neutral-400 text-center sm:text-left">
+                Developed a scheduling system to reduce time conflicts between
+                employes and customers reducing wasted time using React,
+                Supabase, and hosted using AWS.
+              </p>
+
+              <!-- Tech list (center on mobile, left on desktop) -->
+              <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+                <span class="kr">React</span>
+                <span class="kr">Supabase</span>
+                <span class="kr">AWS</span>
+              </div>
+            </div>
+          </div>
+          <!-- end block -->
+
+          <!-- Start EXP Block -->
+          <div class="exp-card">
+            <div
+              class="bg-neutral-900 border-2 border-neutral-700 p-6 rounded-lg flex flex-col gap-4"
             >
-            <span class="text-[0.5em] kr text-neutral-500 leading-relaxed">
-              This spot is reserved for future roles and contributions. Stay
-              tuned.
-            </span>
+              <!-- Mobile layout (≤640px) -->
+              <div
+                class="block sm:hidden flex flex-col items-center gap-2 text-center"
+              >
+                <span class="text-sm">May 2021 – July 2025 • Columbus, OH</span>
+                <h3 class="ksb text-xl">Arabic Teacher</h3>
+                <p class="kb text-neutral-200 text-sm">
+                  Masjid Ibn Taymiyah and Islamic Center
+                </p>
+              </div>
+
+              <!-- Desktop layout (>640px) -->
+              <div class="hidden sm:block">
+                <div class="flex justify-between text-sm">
+                  <h3 class="ksb text-xl">Arabic Teacher</h3>
+                  <span>May 2021 – July 2025</span>
+                </div>
+                <div class="flex justify-between kb text-neutral-200 text-sm">
+                  <p>Masjid Ibn Taymiyah and Islamic Center</p>
+                  <span>Columbus, OH</span>
+                </div>
+              </div>
+
+              <!-- Description (center on mobile, left on desktop) -->
+              <p class="kr text-neutral-400 text-center sm:text-left">
+                Designed and delivered an Arabic curriculum for learners of all
+                ages, managed classroom activities and progress assessments for
+                up to 80 students, and provided tailored mentorship to boost
+                language proficiency and cultural understanding.
+              </p>
+
+              <!-- Skills list (center on mobile, left on desktop) -->
+              <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+                <span class="kr">Curriculum Design</span>
+                <span class="kr">Classroom Management</span>
+                <span class="kr">Student Assessment</span>
+              </div>
+            </div>
           </div>
+          <!-- end EXP Block -->
         </div>
-      </div>
+      </section>
+    </div>
+    <div
+      id="logo"
+      class="grid grid-cols-2 h-8 w-8 ksb grid-rows-2 gap-0 text-sm font-bold"
+    >
+      <div class="text-center logo-text">A</div>
+      <div class="text-center logo-text">B</div>
+      <div class="text-center logo-text">D</div>
+      <div class="text-center logo-text">I</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+
     <script src="./app.js"></script>
   </body>
 </html>

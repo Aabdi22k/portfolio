@@ -8,31 +8,8 @@
   scrollbar-width: none;  
 }
 
-progress {
-  position: fixed;
-  top: 32em;
-  left: -20em;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 75vh;
-  height: 5px;
-  background: transparent;
-  border-radius: 10000;
-  z-index:2;
-}
-progress::-webkit-progress-bar {
-  background: #333333;
-  border-radius: 10000;
-}
-progress::-webkit-progress-value {
-  background: white;
-  background-attachment: fixed;
-}
-progress::-moz-progress-bar {
-  background: white;
-  
-  background-attachment: fixed;
-}
+
+
 
 
 .hid {
@@ -55,37 +32,6 @@ progress::-moz-progress-bar {
   transform-origin: bottom;
   position: absolute;  
 }
-#ace-card1, #ace-card2, #ace-card3, #ace-card4 {
-  width: 240px;
-  height: 360px;
-  background: #111111; /* Transparent background */
-  color: white;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-  scale:1.5;
-}
-.joker {
-  width: 240px;
-  height: 360px;
-  background: #111111; /* Transparent background */
-  color: white;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-  scale:1.5;
-}
-
-ul {
-  list-style-type: disc; /* Ensures bullet points are visible */
-  margin-left: 20px;    /* Adds indentation for nested lists */
-}
 
 
 
@@ -104,8 +50,10 @@ ul {
 .kr {
   font-family: "Kodchasan", sans-serif;
   font-weight: 400;
+  
   font-style: normal;
 }
+
 
 .km {
   font-family: "Kodchasan", sans-serif;
@@ -159,4 +107,175 @@ ul {
   font-family: "Kodchasan", sans-serif;
   font-weight: 700;
   font-style: italic;
+}
+
+
+
+/* section container */
+#featured-projects {
+  padding: 4rem 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+#featured-projects h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+}
+
+/* card list */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* each card */
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #111111;
+  padding: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 2px solid #333333;
+}
+
+/* alternate image/text */
+.project-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* image */
+.project-image {
+  flex: 1;
+  max-width: 400px;
+}
+.project-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+/* content */
+.project-content {
+  flex: 1;
+}
+.project-content h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.project-content .description {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* tech list */
+.tech-list {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #bbb;
+  margin-bottom: 1.5rem;
+}
+
+/* buttons */
+.btn-group {
+  display: flex;
+  gap: 1rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.375rem;
+  border: 2px solid #444;
+  transition: all 0.2s, color 0.2s;
+}
+.btn:hover {
+  background: #222;
+  color: #fff;
+  scale:1.1;
+  
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .project-image {
+    max-width: 100%;
+  }
+  .tech-list {
+    justify-content: center;
+  }
+}
+
+
+.hero-text {
+  font-size: clamp(2em, 7.5vw, 4em);
+}
+
+.hero-subtext {
+  font-size: clamp(1em, 2.5vw, 1.5em);
+}
+
+/* make every .btn an icon + text pill */
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* your existing properties stay here */
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.375rem;
+  border: 2px solid #444;
+  transition: all 0.2s, color 0.2s;
+}
+
+/* hover state you already have */
+.skill:hover {
+  background: #222;
+  color: #fff;
+  scale: 1.1 !important;
+}
+
+/* arrow styling + animation */
+.scroll-indicator .arrow {
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0;
+  animation: scrollAnim 1.5s infinite ease-in-out;
+}
+
+/* stagger second arrow */
+.scroll-indicator .arrow:nth-child(2) {
+  animation-delay: 0.75s;
+}
+
+/* keyframes to fade & move */
+@keyframes scrollAnim {
+  0%, 20% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80%, 100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
 }
